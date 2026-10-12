@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC Stats Visualizer</title>
+  </head>
+  <body>
+    <main class="visualizer-shell">
+      <header class="visualizer-header">
+        <p class="eyebrow">LOCAL STATS FILE</p>
+        <h1>WebRTC Stats Visualizer</h1>
+        <p>Load one schema v1 Producer or Consumer dump. The file is read in this browser. Producer encoded payload bitrate excludes transport overhead; Browser JS Heap is not System RAM.</p>
+      </header>
+
+      <section class="upload-card" aria-labelledby="upload-title">
+        <h2 id="upload-title">Choose a stats dump</h2>
+        <label for="stats-file">JSON file</label>
+        <input id="stats-file" type="file" accept="application/json,.json" />
+        <p id="load-error" class="load-error" role="alert" hidden></p>
+        <p id="load-status" class="load-status" aria-live="polite">No file loaded.</p>
+      </section>
+
+      <section id="dashboard" class="dashboard" hidden>
+        <div class="dashboard-heading">
+          <div>
+            <p class="eyebrow">SCHEMA VERSION 1</p>
+            <h2 id="dump-title"></h2>
+          </div>
+        </div>
+        <dl id="metadata" class="metadata-grid"></dl>
+        <section aria-labelledby="summary-title">
+          <h3 id="summary-title">Latest sample</h3>
+          <div id="metrics" class="metric-grid"></div>
+        </section>
+        <section aria-labelledby="charts-title">
+          <h3 id="charts-title">Measurement history</h3>
+          <p id="renderer-status" class="renderer-status" role="status" aria-live="polite"></p>
+          <div id="charts" class="chart-grid"></div>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="/src/stats/stats-visualizer.ts"></script>
+  </body>
+</html>

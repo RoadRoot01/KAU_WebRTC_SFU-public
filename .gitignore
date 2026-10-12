@@ -1,0 +1,29 @@
+# Dependencies and generated build output
+/node_modules/
+/dist/
+
+# Local artifacts, benchmark outputs, and runtime logs
+/artifacts/e2e-media-smoke*.json
+/artifacts/e2e-media-smoke*.txt
+/artifacts/soak-runs/
+/artifacts/distributed-load/
+/logs/
+/downloads/
+*.log
+*.jsonl
+*.dump
+*.gz
+*.csv
+
+# Local project tooling and test material
+/.serena/
+/docs/test/
+/config/distributed-load.local.json
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt

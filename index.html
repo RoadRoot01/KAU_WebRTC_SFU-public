@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebCodecs mediasoup 1:N</title>
+</head>
+
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <h1>WebCodecs mediasoup 1:N</h1>
+        <p>첫 접속자는 producer가 되고, 이후 접속자는 같은 WebCodecs stream을 consume한다.</p>
+      </div>
+      <div class="startControls">
+        <fieldset id="producerSettings">
+          <legend>Producer 설정</legend>
+          <label for="simulcastToggle">
+            <input id="simulcastToggle" type="checkbox" checked />
+            송신자로 연결될 경우 Simulcast 사용
+          </label>
+        </fieldset>
+        <button id="startButton" type="button">Start</button>
+        <div class="sessionActions">
+          <button id="dumpStatsButton" type="button" disabled>Dump Stats</button>
+          <a class="buttonLink" href="/stats-visualizer.html" target="_blank" rel="noopener">Visualizer</a>
+        </div>
+        <p id="measurementStatus" class="measurementStatus" role="status" aria-live="polite">Not recording</p>
+      </div>
+    </section>
+
+    <section id="consumerLayerControls" class="layerControls" hidden>
+      <div>
+        <strong>화질 우선</strong>
+        <p>네트워크 상태에 따라 실제 화질은 낮아질 수 있습니다.</p>
+      </div>
+      <div class="layerButtons" role="group" aria-label="Consumer preferred layer">
+        <button id="consumerLayerLow" type="button" data-layer="low" aria-pressed="false">LOW</button>
+        <button id="consumerLayerMid" type="button" data-layer="mid" aria-pressed="false">MID</button>
+        <button id="consumerLayerHigh" type="button" data-layer="high" aria-pressed="false">AUTO/HIGH</button>
+      </div>
+      <output id="consumerLayerStatus" aria-live="polite">자동</output>
+    </section>
+
+    <section class="videoGrid">
+      <figure>
+        <video id="localVideo" muted playsinline autoplay></video>
+        <figcaption id="localCaption">Producer preview</figcaption>
+      </figure>
+      <figure>
+        <video id="remoteVideo" playsinline autoplay></video>
+        <figcaption id="remoteCaption">Consumer playback</figcaption>
+      </figure>
+    </section>
+
+    <section class="stats">
+      <div><span>Socket</span><strong id="socketState">idle</strong></div>
+      <div><span>Role</span><strong id="roleState">idle</strong></div>
+      <div><span>Simulcast</span><strong id="simulcastState">n/a</strong></div>
+      <div><span>Peer ID</span><strong id="peerId">-</strong></div>
+      <div><span>Connected consumers</span><strong id="consumerCount">0</strong></div>
+      <div><span>Encoded chunks</span><strong id="chunkCount">0</strong></div>
+      <div><span>Injected RTP packets</span><strong id="packetCount">0</strong></div>
+      <div><span>Consumer</span><strong id="consumerState">idle</strong></div>
+      <div><span>RTP received</span><strong id="rtpReceived">0</strong></div>
+      <div><span>Frames decoded</span><strong id="framesDecoded">0</strong></div>
+      <div><span>SFU Input FPS</span><strong id="sfuInputFps">n/a</strong></div>
+      <div><span>LOW Input FPS</span><strong id="lowInputFps">n/a</strong></div>
+      <div><span>MID Input FPS</span><strong id="midInputFps">n/a</strong></div>
+      <div><span>HIGH Input FPS</span><strong id="highInputFps">n/a</strong></div>
+      <div><span>Received FPS</span><strong id="receivedFps">n/a</strong></div>
+      <div><span>Decoded FPS</span><strong id="decodedFps">n/a</strong></div>
+    </section>
+
+    <pre id="log" hidden></pre>
+  </main>
+  <script type="module" src="/src/client.ts"></script>
+</body>
+
+</html>

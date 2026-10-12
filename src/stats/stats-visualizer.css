@@ -1,0 +1,72 @@
+:root {
+  color: #182533;
+  background: #edf2f5;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+
+.visualizer-shell {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 32px 24px 56px;
+}
+
+.visualizer-header { margin-bottom: 24px; }
+
+.eyebrow {
+  color: #0a718d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin: 0 0 8px;
+}
+
+h1 { font-size: clamp(28px, 5vw, 42px); margin: 0 0 8px; }
+h2 { font-size: 22px; margin: 0 0 16px; }
+h3 { font-size: 17px; margin: 24px 0 12px; }
+p { color: #52616b; line-height: 1.55; }
+
+.upload-card, .dashboard-heading, .metadata-grid, .metric-card, .chart-card {
+  background: white;
+  border: 1px solid #d5e0e5;
+  border-radius: 10px;
+}
+
+.upload-card { padding: 20px; }
+.upload-card label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.upload-card input { max-width: 100%; }
+.load-status { font-size: 13px; margin: 12px 0 0; }
+.load-error { background: #fff1ef; border-radius: 6px; color: #9d241b; margin: 12px 0 0; padding: 10px 12px; }
+.renderer-status { font-size: 13px; font-weight: 700; margin: 0 0 10px; min-height: 1.4em; }
+.dashboard { margin-top: 22px; }
+.dashboard-heading { padding: 20px; }
+.dashboard-heading .eyebrow { margin-bottom: 4px; }
+.dashboard-heading h2 { margin: 0; overflow-wrap: anywhere; }
+.metadata-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 12px 0 22px; padding: 16px; }
+.metadata-grid div { min-width: 0; }
+.metadata-grid dt { color: #63727c; font-size: 12px; margin-bottom: 4px; }
+.metadata-grid dd { font-size: 13px; font-weight: 700; margin: 0; overflow-wrap: anywhere; }
+.metric-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.metric-card { min-height: 96px; padding: 14px; }
+.metric-label { color: #63727c; display: block; font-size: 12px; margin-bottom: 10px; }
+.metric-value { display: block; font-size: 21px; overflow-wrap: anywhere; }
+.chart-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.chart-card { min-width: 0; padding: 14px; }
+.chart-card h4 { font-size: 14px; margin: 0 0 12px; }
+.chart-card svg { display: block; height: 250px; overflow: visible; width: 100%; }
+.chart-canvas { display: block; height: 250px !important; max-width: 100%; width: 100% !important; }
+.chart-grid-line { stroke: #e3e9ed; stroke-width: 1; }
+.chart-axis-label { fill: #73818a; font-size: 10px; }
+.chart-axis-title { fill: #52616b; font-size: 10px; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 10px; }
+.chart-legend span { align-items: center; color: #52616b; display: inline-flex; font-size: 12px; gap: 6px; }
+.legend-swatch { border-radius: 2px; display: inline-block; height: 3px; width: 14px; }
+.chart-empty { color: #73818a; font-size: 13px; min-height: 200px; }
+
+@media (max-width: 720px) {
+  .visualizer-shell { padding: 22px 16px 40px; }
+  .metadata-grid, .chart-grid { grid-template-columns: 1fr; }
+}

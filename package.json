@@ -1,0 +1,45 @@
+{
+  "name": "my-webcodec_1ton_mediasoup",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preserver": "npm run verify-mediasoup-pipeline",
+    "preserver:debug": "npm run verify-mediasoup-pipeline",
+    "preserver:prod": "npm run verify-mediasoup-pipeline",
+    "server": "tsx src/server.ts",
+    "server:debug": "tsx src/server.ts --debug",
+    "server:prod": "tsx src/server.ts",
+    "client": "vite",
+    "dev": "concurrently \"npm run server:debug\" \"npm run client\"",
+    "build": "tsc --noEmit && vite build",
+    "start:prod": "npm run build && concurrently -k \"npm run server:prod\" \"npm run preview\"",
+    "preview": "vite preview",
+    "test": "npm run build && npm run test:stats",
+    "test:stats": "node --import tsx --test scripts/stats-retention.test.mjs scripts/consumer-stats.test.mjs scripts/analyze-stats-soak.test.mjs",
+    "stats:soak": "node scripts/stats-soak.mjs",
+    "stats:soak:analyze": "node scripts/analyze-stats-soak.mjs",
+    "sync-mediasoup-pipeline": "node scripts/mediasoup-pipeline.mjs sync",
+    "verify-mediasoup-pipeline": "node scripts/mediasoup-pipeline.mjs verify",
+    "e2e:media": "node scripts/e2e-media-smoke.mjs"
+  },
+  "dependencies": {
+    "chart.js": "4.5.1",
+    "express": "^5.2.1",
+    "mediasoup-client": "^3.19.9",
+    "vite": "^7.3.0",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.2",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "concurrently": "^9.2.1",
+    "pidusage": "^4.0.1",
+    "puppeteer": "^25.3.0",
+    "systeminformation": "^5.31.17",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}
