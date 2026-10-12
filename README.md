@@ -161,7 +161,7 @@ Producer bitrate는 encoded chunk byte로 계산한 **인코딩 payload bitrate*
 
 Consumer의 **Received FPS**와 **Decoded FPS**는 각각 RTCStats timestamp 구간의 `framesReceived`와 `framesDecoded` counter 차이로 계산하며, 렌더링/display FPS가 아닙니다. **Received media bitrate**는 `bytesReceived` 차이로 계산하며 전체 네트워크 사용량이 아닙니다. `packetsLost`에는 유효한 음수도 포함해 브라우저의 부호 있는 counter 값이 유지됩니다. `getStats()`가 실패하거나 빈 결과를 반환한 샘플은 missing으로 기록되고 rate 기준값이 초기화됩니다. 복구 후 첫 샘플은 기준값을 설정하고 그 다음 샘플부터 rate를 계산합니다.
 
-페이지 세션은 최대 **4,200개 샘플 또는 70분** 중 먼저 도달하는 한도까지 기록합니다. 한도에 도달하면 기존 샘플은 보존하고 추가 기록을 멈추며 **Dump Stats**는 계속 사용할 수 있습니다. Producer capture/socket이 닫히거나 Consumer 세션이 끝나면 수집 상태가 stopped로 바뀌지만 덤프 데이터는 유지됩니다. Visualizer는 기본적으로 로컬에 포함된 **Chart.js 4.5.1**을 사용하고 chart module이 실패하면 SVG로 대체합니다. collection-status metadata가 없는 Phase 1 v1 덤프를 포함해 schema v1 파일을 읽으며, legacy sangjun 파일은 지원하지 않습니다.
+페이지 세션은 최대 **4,200개 샘플 또는 70분** 중 먼저 도달하는 한도까지 기록합니다. 한도에 도달하면 기존 샘플은 보존하고 추가 기록을 멈추며 **Dump Stats**는 계속 사용할 수 있습니다. Producer capture/socket이 닫히거나 Consumer 세션이 끝나면 수집 상태가 stopped로 바뀌지만 덤프 데이터는 유지됩니다. Visualizer는 기본적으로 로컬에 포함된 **Chart.js 4.5.1**을 사용하고 chart module이 실패하면 SVG로 대체합니다. collection-status metadata가 없는 Phase 1 v1 덤프를 포함해 schema v1 파일을 읽습니다.
 
 ## 기타 명령어
 
